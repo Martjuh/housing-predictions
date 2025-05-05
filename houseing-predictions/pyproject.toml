@@ -1,0 +1,19 @@
+[project]
+name = "houseing-predictions"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Martjuh",email = "44202622+Martjuh@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+]
+
+[tool.poetry]
+packages = [{include = "houseing_predictions", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
