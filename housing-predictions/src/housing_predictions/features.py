@@ -29,16 +29,18 @@ class FeaturePipeline:
     def set_label_column(self, label_column_name):
         self.label_column_name = label_column_name
 
-    def generate_output(self, data : pd.DataFrame):
+    def generate_output(self, data : pd.DataFrame, includes_label=True):
         if not isinstance(self.keep_columns, list):
             print(f'Warning! Empty or incorrect value for keep_columns: {self.keep_columns}.\n Starting with empty list!') # TODO Proper logging
             keep_columns = []
         else:
-            keep_columns = self.keep_columns
+            keep_columns = self.keep_columns.copy()
 
         for feature in self.pipeline:
            data = feature.calculate(data)
 
+        if not includes_label:
+            keep_columns.remove(self.label_column_name)
         data = data[keep_columns]
         return data.dropna()
 
